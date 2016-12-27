@@ -36,12 +36,23 @@ hr {
     border-color: #999999;
 }
 
+#map {
+    /*float: center;*/
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.land {
+  stroke: #999;
+  fill: #edf9ff;
+  stroke-width: 0.2;
+}
 .brand,
 .address-bar {
     display: none;
 }
 
-.navbar-brand {
+.navbar-brand>img {
     text-transform: uppercase;
     font-weight: 900;
     letter-spacing: 2px;

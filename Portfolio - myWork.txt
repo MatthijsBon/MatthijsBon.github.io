@@ -16,7 +16,7 @@ As continuation of this course I followed a course on making a digital serious g
 
 The multiplayer game we designed has two players, a child on a bike and a grandparent with a touch device. The child rides a bike on a track which has holes in it. The child's cycling will be translated into speed in the game, while at some places, 'stages', in the game the grandparent still has to draw the track. The child has to anticipate their speed while also acting according to traffic situations, such as a pedestrian crossing or red light. The grandparent learns to interact with touch gestures and can ask the child for help if necessary. Additionally, if the child refuses to stop for red lights or crossing, the grandparent is notified and can teach (in real life) the child something about that specific situation. The game is live and playable <a href src="http://duorider.letsinspire.com" target="_blank">here</a>
 
-
+# aboutMe
 
 
 # home
