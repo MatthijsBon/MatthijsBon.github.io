@@ -1,0 +1,87 @@
+<html>
+
+<head>
+    <title>DataVis</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="introjs.min.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <script src="http://d3js.org/d3.v4.min.js"></script>
+    <script src="http://d3js.org/topojson.v1.min.js"></script>
+    <script type="text/javascript" src="d3-extended/d3-extended.js"></script>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+    <div class="col-md-12" id="info">
+        <div class="col-md-3">
+        </div>
+        <h1 class="col-md-6 text-center">
+            <span data-step="1" data-intro="This web application gives analysts insight in the municipalities in the Netherlands and their attributes. Source: CBS & Kadaster - Wijk- en buurtkaart 2015" data-position='bottom'> Municipalities in the Netherlands </span>
+            <a class="btn btn-large btn-default" href="javascript:void(0);" onclick="javascript:introJs().start();"><span class="glyphicon glyphicon-info-sign"></span></a>
+        </h1>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="col-md-6">
+        <div data-step="2" data-intro="The map gives a visual representation of the municipalities in the Netherlands. You can highlight and select different municipalities by hovering and clicking. The map is always shown through a choropleth of a selected attribute" data-position='right' id="map">
+        </div>
+
+    </div>
+
+    <div class="col-md-6">
+        <div data-step="3" data-intro="Here the currently highlighted and selected municipalities are shown together with their attributes selected in the scatterplot and the choropleth." data-position='left' id="sel-high">
+            <div id="highlighted-g" class="col-md-6">
+                <h4>Highlighted</h4>
+
+            </div>
+            <div id="selected-g" class="col-md-6">
+                <h4>Selected</h4>
+
+            </div>
+        </div>
+        <div data-step="4" data-intro="The scatterplot visualizes the values for two selected attributes of the municipalities. Outliers can easily be found here. Also the trendline of the two variables is shown." data-position='left' id="scatterplot">
+        </div>
+        <div id="options">
+            <h3>Options</h3>
+            <div data-step="5" data-intro="This is a small options menu. Here you can change the attributes for both the choropleth and the scatterplot." data-position='right' id="axes" class="col-md-6">
+                <div>Change x-axis:<br/>
+                    <select id="select-list-x" class="option-list">
+			    </select>
+                </div>
+
+                <div>Change y-axis:<br/>
+                    <select id="select-list-y" class="option-list">
+			    </select>
+                </div>
+
+                <div>Change choropleth<br/>
+                    <select id="select-choropleth" class="option-list">
+			    </select>
+                </div>
+            </div>
+
+            <div data-step="6" data-intro="Calculated correlation from scatterplot variables." data-position='top' id="correlation" class="col-md-6">
+            </div>
+            <div data-step="7" data-intro="Average value calculated from choropleth variable." data-position='top' id="average" class="col-md-6">
+            </div>
+            <div data-step="8" data-intro="This button shows the municipalities that are closest to the mean value of the currently selected choropleth attribute." data-position='top' id="avg_munc" class="col-md-6">
+            </div>
+            <div id="other-o" class="col-md-6">
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <script src="script.js"></script>
+    <script src="functions.js"></script>
+    <script type="text/javascript" src="intro.min.js"></script>
+
+</body>
+<html>
