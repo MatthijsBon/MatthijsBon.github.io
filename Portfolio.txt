@@ -1,13 +1,14 @@
 Portfolio
 
-# myWork
-1. Geomatics synthesis project
+#############################  myWork  #############################
+
+#### 1. Geomatics synthesis project ####
 During the fourth quarter of the first year of the MSc Programme Geomatics for the Built Environment at the Delft University of Technology, the Geomatics Synthesis Project takes place. In this project students apply all their knowledge they have acquired during the courses while working in groups of five or six. In the prcess they gain experience in project management, data processing, data analysis, application and presentation. The overreaching topic was Monitoring flows and occupation patterns with Wi-Fi. In the scope of this topic, the project team AtoB focused on Identifying movement patterns from large scale Wi-Fi-based location data, both outdoor and indoor. While working on this project, I discovered I work well in groups and I like being up-to-date on every part of the project. I can switch easily from one job to another and like to help others in fixing their problems. Additionally, I found out that I like to have great visuals and I can be really critical on the right type of visualization.
 
-2. Data visualization
+#### 2. Data visualization ####
 For the data visualization course at the TU Delft, two teammembers and I created a data visualization of all municipalities in the Netherlands with data from the dutch cadastre and bureau of statistics (Kadaster & CBS). I really enjoyed this project, since it showed me the capabilities of D3.js and got me into javascript programming. Although I'm still not a hardcore javascript programmer, I enjoy looking for solutions in coding and javascript offers many solutions to a problem. Additionally, I was mainly responsible for the data. Manipulating and transforming the data to make it fit for our application was a big part of this project and I was even a little bit proud when we presented the final result. Click 'see more' for an live version of this data visulualization, or see a demonstration here
 
-3. Serious gaming
+#### 3. Serious gaming ####
 Two electives I followed were focussed on serious gaming. On the one hand I appreciate the design part of a game, while on the other hand I'm very focussed on the details for the final result. I want everything to look and feel good and I feel really responsible to make the final game something fun and worth playing. 
 
 I was part of a group that created a analog game that shows te players the challenges that come with making a transition from a linear economy to a circular economy. This was a board game with 5 players, 3 product manufacturers and 2 waste managers. All players have to work together to make the transition and manage their resources. In this group I was mainly responsible for the artwork and graphics of the boardgame. In both testing sessions with other students and our client, CE Delft, we saw engaged players, fully concetrated on making the transition and winning the game. Our client was very happy with our game and will use this in the future within meetings with municipalities and policy makers. This feels like a great achievement.
@@ -16,10 +17,35 @@ As continuation of this course I followed a course on making a digital serious g
 
 The multiplayer game we designed has two players, a child on a bike and a grandparent with a touch device. The child rides a bike on a track which has holes in it. The child's cycling will be translated into speed in the game, while at some places, 'stages', in the game the grandparent still has to draw the track. The child has to anticipate their speed while also acting according to traffic situations, such as a pedestrian crossing or red light. The grandparent learns to interact with touch gestures and can ask the child for help if necessary. Additionally, if the child refuses to stop for red lights or crossing, the grandparent is notified and can teach (in real life) the child something about that specific situation. The game is live and playable <a href src="http://duorider.letsinspire.com" target="_blank">here</a>
 
+#### 4. 3D visualizations & Computation Geometry
+
+#### 5. Architectural design & Renderings
+In the three years of my bachelor Architecture I've worked on six large projects. Some of them were noteworthy, even though I most probably won't be doing anything in the future that is architecture-related. The images below show some of these projects.
+
+#############################  aboutMe  ################################
+
+#### Deventer ####
+"1993 - 2011<br>This is where I grew up. I have lived 18 years with my parents and three sisters. Although I was the only boy with three sisters, we get along very wel. When I was younger I played a lot with Lego, that is probably where my inspiration with architecture started. And when games like The Sims came out, I was the one building the houses while my sisters were playing the people in the houses."
+
+#### Zutphen ####
+"2005 - 2011<br>After middel school, I chose a different path than my older sister and chose for VWO in Steiner Education at the 'Vrije School Zutphen'. This type of education appealed to me since it was not a education factory as other school, but more focussed on the overall development of students. Additionally, the creative subjects interested me and eventually resulted in chosing for Architecture for the built environment in Delft. "
+
+#### Delft ####
+"2011 - today<br>I started my bachelor at the faculty of Architecture and the built environment in 2011. At first, my ambition was to become an architect and design residential housing and public buildings. In the three years of this bachelor I did six projects, involving multiple disciplines in architecture and designing different kinds of buildings. An overview of some of my design can be found <a href='projects.html'>here</a>. The third year I did an internship at <a href='http://wam-architecten.nl/'>WAM architecten</a>. This was very useful for some architectural experience, but even more because I found out that I probably was not going to be a very succesful architect and could design anything I want. It was then I decided to switch to a more technical master, something less subjective. The master Geomatics for the built environment combined my knowledge of the built environment in a technical way with (geo)data science and programming. In the first weeks I was already confident this direction was a much better fit for me.
+<br>
+In my years in Delft I also participated in extracurricular activities. In the third year of my bachelor I was part of the Faculty Student Council and an activities committee of volleyball association D.S.V.V. 'Punch'. After I completed my bachelor I was asked to be part of the board of this volleyball association, where I was responsible managing our association building, contact with tenants, finance as well as supervising other committees and general policy. As of today I am still involved in with this association, I play volleyball and am part of the committee that manages and maintains the association's building."
+
+#### Amsterdam ####
+"<h3>Amsterdam, 2016 - present</h3>Currently I am working on my thesis definition and the aim is to graduate in June 2017. The subject of my thesis is to improve current methods for localization of underground metal cables. The aim is to be able to determine both location and quantity of recyclable cables both underground and in buildings. This thesis research is in cooperation with The Amsterdam Institute for Advanced Metropolitan Solutions (<a href='http://www.ams-amsterdam.com/home/' target='_blank'>AMS</a>)"
+
+#############################  home  ################################
+
+Welcome to my online portfolio! I am doing my MSc Thesis for the Geomatics programme at the Faculty of Architecture and the built environment at Delft University of Technology. This portfolio is to showcase <a href='projects.html'>my work</a> at the Delft University of Technology so far and to improve my own Javascript and HTML skills, as well as keep a database for myself.
+
+#############################  skills  #############################
 
 
-
-# home
-
-
-# skills
+http://joelb.me/scrollpath/
+https://tympanus.net/Tutorials/CSS3PageTransitions/index3.html#about
+http://ashleydw.github.io/lightbox/#hidden-elements
+http://studenten.tudelft.nl/fileadmin/UD/MenC/Support/Internet/TU_Website/Studentenportal/Studentenportal/Faculteitspecifiek/Industrieel_Ontwerpen/Onderwijszaken/Stages/Algemeen/Portfolio/doc/Notes_From_A_Prospective_Employer.pdf

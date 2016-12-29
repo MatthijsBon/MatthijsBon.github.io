@@ -11,6 +11,7 @@ body {
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+    padding-top:70px;
 }
 
 h1,
@@ -47,6 +48,11 @@ hr {
   fill: #edf9ff;
   stroke-width: 0.2;
 }
+.info {
+    font-size: 14 px;
+    font-weight: bold;
+}
+
 .brand,
 .address-bar {
     display: none;
@@ -73,6 +79,12 @@ hr {
     text-transform: capitalize;
 }
 
+.network-name {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
 .brand-before {
     margin: 15px 0;
 }
