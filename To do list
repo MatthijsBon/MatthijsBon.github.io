@@ -1,0 +1,10 @@
+1. Zou het tof zijn om in te kunnen zoomen op een gemeente en daarin de wijken en buurten te laten zien?
+     http://bl.ocks.org/mbostock/2206590
+2. Sorteren op data per provincie? - Join maken
+     data toegevoegd - nu nog visualiseren!
+3. Data van buurten en wijken gebruiken om de bevolkingsdichtheid nog nauwkeuriger te visualiseren?
+     Intersect data of buurten?
+     http://bl.ocks.org/mbostock/670b9fe0577a29c39a1803f59c628769
+4. Positioneren van de tooltip op basis van locatie van mouse?
+
+EEEEEEEHMM er zijn 2 items toegevoegd aan "path" en die zitten in de chart. Deze worden dus ook geselecteerd als je d3.selectAll("path") doet en geven een nullpointer exception wanneer ik d.properties aanroep. dit kan verholpen worden door alle #map path features aan te roepen met d3.SelectAll("#map path")

@@ -1,145 +1,137 @@
-var width = d3.select("#map").node().getBoundingClientRect().width / 1.05,
-  height = window.innerHeight / 1.15,
-  centered;
+/*
+This is the main script file. The basis for the application and all of the 
+vairables are defined here
+The rest of the D3 functions are defined in functions.js
+*/
+// Global vairables
+var width = window.innerWidth / 2,
+    height = window.innerHeight / 1.15;
 
 var projection = d3.geoMercator()
-  .scale(7500)
-  .translate([width / 2, height / 2])
-  .center([5.4, 52.2]);
+    .scale(7500)
+    .translate([width / 2, height / 2])
+    .center([5.4, 52.2]);
 
 var path = d3.geoPath()
-  .projection(projection);
+    .projection(projection);
 
 var svg = d3.select('#map').append('svg')
-  .attr("width", width)
-  .attr("height", height)
+    .attr("width", width)
+    .attr("height", height);
 
-var infotext = "The map on the left shows my biography in a geographical manner. Click on one of the blue municipalities in the Netherlands\
-         to show details about my time there. Click again on the municipality to zoom out."
+var marginsChart = {
+    "left": 65,
+    "right": 100,
+    "top": 15,
+    "bottom": 25
+};
 
-d3.select("#information").append('p')
-    .style('font-size', '14px')
-    .html(infotext)
+var widthChart = window.innerWidth / 2.8;
+var heightChart = window.innerHeight / 2.3;
 
-window.details = {
-    "Deventer": "<h3>Deventer, 1993 - 2011</h3>This is where I grew up. I have lived 18 years with my parents and three sisters. Although \
-       I was the only boy with three sisters, we get along very wel. When I was younger I played a lot with Lego, that is probably \
-       where my inspiration with architecture started. And when games like The Sims came out, I was the one building the houses while \
-       my sisters were playing the people in the houses.",
+// The chart object, including all margins
+var chart = d3.select('#scatterplot')
+    .append('svg:svg')
+    .attr('width', widthChart + marginsChart.right + marginsChart.left)
+    .attr('height', heightChart + marginsChart.top + marginsChart.bottom)
+    .attr('class', 'chart')
 
-    "Delft" : "<h3>Delft, 2011 - present</h3>I started my bachelor at the faculty of Architecture and the built environment in 2011. \
-       At first, my ambition was to become an architect and design residential housing and public buildings. In \
-       the three years of this bachelor I did six projects, involving multiple disciplines in architecture and \
-       designing different kinds of buildings. An overview of some of my design can be found \
-       <a href='projects.html'>here</a>. The third year I did an internship at <a href='http://wam-architecten.nl/' target='_blank'>\
-       WAM architecten</a>. This was very useful for some architectural experience, but even more because I found out \
-       that I probably was not going to be a very succesful architect and could design anything I want. It was then \
-       I decided to switch to a more technical master, something less subjective. The master Geomatics for the built \
-       environment combined my knowledge of the built environment in a technical way with (geo)data science and programming. \
-       In the first weeks I was already confident this direction was a much better fit for me. \
-       <br><br>\
-       In my years in Delft I also participated in extracurricular activities. In the third year of my bachelor I was \
-       part of the Faculty Student Council and an activities committee of volleyball association <a href='https://www.punch.tudelft.nl/' target='_blank'>\
-       D.S.V.V. 'Punch'</a>. After \
-       I completed my bachelor I was asked to be part of the board of this volleyball association, where I was responsible \
-       managing our association building, contact with tenants, finance as well as supervising other committees and general \
-       policy. As of today I am still involved with this association, I play volleyball and am part of the committee that \
-       manages and maintains the association's building.",
+// The main object where the chart with axis will be drawn
+var main = chart.append('g')
+    .attr('transform', 'translate(' + marginsChart.left + ',' + marginsChart.top + ')')
+    .attr('width', widthChart)
+    .attr('height', heightChart)
+    .attr('class', 'main')
+    .attr('id', 'scatter')
 
-    "Zutphen" : "<h3>Zutphen, 2005 - 2011</h3>After middel school, I chose a different path than my older sister and chose for VWO in \
-       <a href='https://en.wikipedia.org/wiki/Waldorf_education' target='_blank'>Steiner Education</a> at the 'Vrije School Zutphen'. This type of \
-       education appealed to me since it was not a education factory as other school, but more focussed on the overall development \
-       of students. The school being in Zupthen forced my to bike almost every day from home to school, over 18km. Sometimes this was hard, \
-       but most of the times it was a nice wake up. Furthermore, the creative subjects interested me and eventually resulted in chosing \
-       for Architecture for the built environment in Delft. I graduated with my subjects Physics, Biology, Chemistry, Math, Economics and German.",
+var dots = main.append("svg:g");
 
-    "Amsterdam" : "<h3>Amsterdam, 2016 - present</h3>Currently I am working on my thesis definition and the aim is to graduate in June 2017. The \
-       subject of my thesis is to improve current methods for localization of underground metal cables. The aim is to be able to determine both \
-       location and quantity of recyclable cables both underground and in buildings. This thesis research is in cooperation with The Amsterdam Institute \
-       for Advanced Metropolitan Solutions (<a href='http://www.ams-amsterdam.com/home/' target='_blank'>AMS</a>)"
+// Give the attributes reasonable names
+var descriptions = {
+    "WATER": "Contains water",
+    "STED": "Urbanization",
+    "AANT_INW": "Total inhabitants",
+    "AANT_MAN": "Number of men",
+    "AANT_VROUW": "Number of women",
+    "P_00_14_JR": "Percentage 0-14",
+    "P_15_24_JR": "Percentage 15-24",
+    "P_25_44_JR": "Percentage 25-44",
+    "P_45_64_JR": "Percentage 45-64",
+    "P_65_EO_JR": "Percentage 65 and older",
+    "P_ONGEHUWD": "Percentage unmarried",
+    "P_GEHUWD": "Percentage married",
+    "P_GESCHEID": "Percentage divorced",
+    "P_VERWEDUW": "Percentage widowed",
+    "GEBOO_TOT": "Total number of births",
+    "P_GEBOO": "Percentage births per 1000 inhabitants",
+    "STERFT_TOT": "Total number of deaths",
+    "P_STERFT": "Percentage deaths per 1000 inhabitants",
+    "BEV_DICHTH": "Population density",
+    "AANTAL_HH": "Number of households",
+    "GEM_HH_GR": "Average houshold size",
+    "A_BEDV": "Number of companies",
+    "WONINGEN": "Number of houses",
+    "WOZ": "Real estate value",
+    "P_1GEZW": "Percentage single family housing",
+    "P_MGEZW": "Percentage multiple family housing",
+    "AUTO_TOT": "Total number of cars",
+    "OPP_TOT": "Total area",
+    "P_MAN": "Percentage men",
+    "P_VROUW": "Percentage women",
+    "P_AUTO": "Number of cars per 1000 inhabitants",
+    "P_BEDR": "Number of companies per area",
+    "P_WON": "Number of houses per 1000 inhabitants"
 }
 
 // Load the data and initialize the map
-d3.json("gem_portfolio.json", function(error, nlgemeenten2009) {
-  if (error) return console.error(error);
-  window.gemeenten = topojson.feature(nlgemeenten2009, nlgemeenten2009.objects.gem_2015_m);
-  window.g = svg.append("g")
-  g.selectAll("path")
-    .data(gemeenten.features)
-    .enter().append("path")
-    .attr("d", path)
-    .attr("title", function(d) {
-      return d.properties.GM_NAAM;
-    })
+d3.json("gem2015_v9_topo.json", function(error, nlgemeenten2009) {
+    if (error) return console.error(error);
+    window.gemeenten = topojson.feature(nlgemeenten2009, nlgemeenten2009.objects.gem2015_v9);
+    svg.append("g")
+        .attr("class", "land")
+        .selectAll("path")
+        .data(gemeenten.features)
+        .enter().append("path")
+        .attr("d", path)
+        .attr("title", function(d) {
+            return d.properties.GM_NAAM;
+        })
+        // Call the main theme function
+    setMainTheme();
 
-  d3.selectAll("#map path")
-    .style('fill', '#e0e0e0')
-    .style('stroke', '#fff')
-    .style('stroke-width', '0.5')
-    .style('opacity', '0.5')
-    .filter(function(d) {
-      return d.properties.IMPORTANT === 'Y';
-    })
-    .style('fill', '#0363b2')
-    .style('opacity', '0.9')
-    .moveToFront()
-    .on('click', clicked)
-    .on("mouseover", function(d) {
-            var xPosition = d3.mouse(this)[0] - 10;
-            var yPosition = d3.mouse(this)[1] - 10;
-            svg.append("text")
-                .attr("class", "info")
-                .attr("id", "tooltip")
-                .attr("x", xPosition)
-                .attr("y", yPosition)
-                .text(d.properties.GM_NAAM)
-            })
-    .on("mouseout", function(d) {
-            d3.select("#tooltip").remove();
+    // And show the scatterplot with the same data
+    showScatterPlot(gemeenten.features);
+
+    // Load both the axes
+    d3.select("#select-list-x")
+        .on('change', function() {
+            var newVar = d3.select(this).property('value');
+            changeChartX(newVar);
+        });
+    d3.select("#select-list-y")
+        .on('change', function() {
+            var newVar = d3.select(this).property('value');
+            changeChartY(newVar);
         });
 
+    // Initialize the choropleth
+    d3.select("#select-choropleth")
+        .on('change', function() {
+            if (window.mostavgmuns != null)
+                findNearestMunicOff();
+            var choropleth = d3.select(this).property('value');
+            changeChoropleth(choropleth);
+        });
+
+    // Add 'Show mean municipalities' button
+    d3.select('#avg_munc').append("input")
+        .attr("type", "button")
+        .attr("value", "Show mean municipalities")
+        .attr("class", "btn btn-default")
+        .attr("onclick", "findNearestMunic(this)")
+        .attr("id", "avg_munc_button");
+
+    fillOptions()
 
 });
-
-function clicked(d){
-    centerAndZoom(d)
-    showDetails(d)
-}
-
-function centerAndZoom(d) {
-  var x, y, k;
-
-  if (d && centered !== d) {
-    var centroid = path.centroid(d);
-    x = centroid[0];
-    y = centroid[1];
-    k = 4;
-    centered = d;
-  } else {
-    x = width / 2;
-    y = height / 2;
-    k = 1;
-    centered = null;
-  }
-
-  g.selectAll("path")
-    .classed("active", centered && function(d) {
-      return d === centered;
-    });
-
-  g.transition()
-    .duration(750)
-    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")scale(" + k + ")translate(" + -x + "," + -y + ")")
-    .style("stroke-width", 1.5 / k + "px");
-}
-
-function showDetails(munic){
-    d3.selectAll("#information p").remove()
-
-    var name = munic.properties.GM_NAAM
-
-    d3.select("#information")
-        .append('p')
-        .style('font-size', '14px')
-        .html(details[name]);
-}
+d3.select(self.frameElement).style("height", height + "px");
